@@ -16,11 +16,17 @@ namespace DesafioFundamentos.Models
         {
             // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos" // NO TODO
             Console.WriteLine("Digite a placa do veículo para estacionar:");
-            string placa = Console.ReadLine();  
-            veiculos.Add(placa);     
-            // *IMPLEMENTE AQUI*
-           // Console.WriteLine("Digite a placa do veículo para estacionar:");
-        }
+            string placa = Console.ReadLine();          
+
+             if (placa == "")
+                    {
+                        Console.WriteLine("Não é possível cadastrar a placa do veículo, (Campo Vazio).");
+                    }
+                    else
+                    {
+                       veiculos.Add(placa); 
+                    }    
+            }
 
         public void RemoverVeiculo()
         {
@@ -61,11 +67,11 @@ namespace DesafioFundamentos.Models
             // Verifica se há veículos no estacionamento
             if (veiculos.Any())
             {
-                Console.WriteLine("Os veículos estacionados são:");
-
+                
+                int quantidade = veiculos.Count();
+                Console.WriteLine($"Os veículos estacionados são: {quantidade}");
                 // TODO: Realizar um laço de repetição, exibindo os veículos estacionados
                 // *IMPLEMENTE AQUI*
-
                  foreach(string item in veiculos)
                 {
                 Console.WriteLine(item);
@@ -75,6 +81,24 @@ namespace DesafioFundamentos.Models
             {
                 Console.WriteLine("Não há veículos estacionados.");
             }
-        }
+        } 
+        public void Encerrar()
+        {
+            int quantidade = 0;
+            // Verifica se há veículos no estacionamento
+            if (veiculos.Count != 0)
+            {
+                Console.WriteLine("Operação não pode ser realizada, existem carros estacionados");
+                // TODO: Realizar um laço de repetição, exibindo os veículos estacionados             
+            }
+            else
+            {
+              
+                Console.WriteLine("Saindo do Sistema...");              
+                Environment.Exit(0);
+            }
+        }   
+   
     }
 }
+
